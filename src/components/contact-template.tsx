@@ -75,7 +75,7 @@ export const EmailTemplate: React.FC<EmailTemplateProps> = ({
           marginBottom: "10px",
         }}
       >
-        "{message}"
+        {message}
       </p>
     </div>
   </div>
