@@ -28,7 +28,7 @@ export default function Services() {
 
   return (
     <div>
-      <section className="border-t-border dark:border-t-darkBorder dark:bg-darkBg border-t-2 bg-bg py-20 font-base lg:py-[100px]">
+      <section className="border-t-border border-b-border dark:border-t-darkBorder dark:border-b-darkBoarder dark:bg-darkBg border-t-2 border-b-2 bg-bg py-20 font-base lg:py-[100px]">
         <h2 className="mb-14 px-5 text-center text-2xl font-heading md:text-3xl lg:mb-20 lg:text-4xl">
           Our Services
         </h2>
