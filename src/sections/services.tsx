@@ -1,5 +1,3 @@
-import PlatformMarquee from "@/components/platform-marquee"
-
 export default function Services() {
   const services = [
     {
@@ -47,9 +45,6 @@ export default function Services() {
           ))}
         </div>
       </section>
-      <div>
-      <PlatformMarquee/>
-      </div>
     </div>
   );
 }
