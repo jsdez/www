@@ -1,13 +1,13 @@
 import type { Metadata } from 'next'
-import { DM_Sans } from 'next/font/google'
+import { Hammersmith_One } from 'next/font/google'
 import './globals.css'
 import { ThemeSwitcher } from '@/components/theme-switcher'
 import { ThemeProvider } from '@/components/theme-provider'
 
-const dmSans = DM_Sans({ subsets: ['latin'] })
+const hammersmithOne = Hammersmith_One({ subsets: ['latin'], weight: '400' })
 
 export const metadata: Metadata = {
-  title: 'Neobrutalism Saas template',
+  title: 'NeoAutomate',
 }
 
 export default function RootLayout({
@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={dmSans.className}>
+      <body className={hammersmithOne.className}>
         <ThemeProvider attribute="class" disableTransitionOnChange>
           {children}
           <ThemeSwitcher />

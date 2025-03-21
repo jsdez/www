@@ -1,5 +1,5 @@
-import Community from '@/sections/community'
-import Features from '@/sections/features'
+import About from '@/sections/about'
+import Services from '@/sections/services'
 import Header from '@/sections/header'
 import Faq from '@/sections/faq'
 import Pricing from '@/sections/pricing'
@@ -9,8 +9,8 @@ export default function Home() {
   return (
     <>
       <Header />
-      <Features />
-      <Community />
+      <Services />
+      <About />
       <Faq />
       <Pricing />
       <Footer />
