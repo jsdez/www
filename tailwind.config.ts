@@ -23,7 +23,11 @@ const config: Config = {
   			darkBg: '#272733',
   			darkText: '#eeefe9',
   			darkBorder: '#000',
-  			secondaryBlack: '#212121'
+        medBg: '#272733',
+  			medText: '#eeefe9',
+  			medBorder: '#000',
+  			secondaryBlack: '#212121',
+        altBlack: '#d0d0d0'
       },
       borderRadius: {
         base: '5px',

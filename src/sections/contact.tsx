@@ -1,137 +1,15 @@
-"use client";
-
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
-import {
-  Form,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormControl,
-  FormDescription,
-  FormMessage,
-} from "@/components/ui/form"; // Importing custom form components
-import { Button } from "@/components/ui/button"; // Assuming you have a button component
-
-// Define your form schema using Zod for validation
-const formSchema = z.object({
-  firstName: z.string().min(1, { message: "First name is required" }),
-  email: z.string().email({ message: "Please enter a valid email" }),
-  message: z.string().min(1, { message: "Message cannot be empty" }),
-});
-
-type FormData = z.infer<typeof formSchema>;
+import ContactForm from "@/components/contact-form";
 
 export default function Contact() {
-  const [response, setResponse] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
-
-  const form = useForm<FormData>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      firstName: "",
-      email: "",
-      message: "",
-    },
-  });
-
-  const { handleSubmit, control, formState: { errors } } = form;
-
-  const onSubmit = async (data: FormData) => {
-    setLoading(true);
-    setResponse(null);
-
-    try {
-      const res = await fetch("/api/send", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-
-      const result = await res.json();
-      if (res.ok) {
-        setResponse("Email sent successfully!");
-      } else {
-        setResponse(`Error: ${result.error}`);
-      }
-    } catch (error) {
-      setResponse("Failed to send message.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
-    <section className="bg-white dark:bg-secondaryBlack w-full py-20">
-      <div className="mx-auto w-container max-w-lg px-5">
-        <h2 className="text-center text-2xl font-heading mb-8">Contact Us</h2>
-
-        <Form {...form}>
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-            {/* First Name Field */}
-            <FormField control={control} name="firstName">
-              {({ field }) => (
-                <FormItem>
-                  <FormLabel>First Name</FormLabel>
-                  <FormControl>
-                    <input
-                      {...field}
-                      className="w-full p-2 border-2 rounded-md"
-                      placeholder="Your Name"
-                    />
-                  </FormControl>
-                  <FormMessage>{errors.firstName?.message}</FormMessage>
-                </FormItem>
-              )}
-            </FormField>
-
-            {/* Email Field */}
-            <FormField control={control} name="email">
-              {({ field }) => (
-                <FormItem>
-                  <FormLabel>Email</FormLabel>
-                  <FormControl>
-                    <input
-                      {...field}
-                      className="w-full p-2 border-2 rounded-md"
-                      placeholder="Your Email"
-                    />
-                  </FormControl>
-                  <FormMessage>{errors.email?.message}</FormMessage>
-                </FormItem>
-              )}
-            </FormField>
-
-            {/* Message Field */}
-            <FormField control={control} name="message">
-              {({ field }) => (
-                <FormItem>
-                  <FormLabel>Message</FormLabel>
-                  <FormControl>
-                    <textarea
-                      {...field}
-                      className="w-full p-2 border-2 rounded-md"
-                      placeholder="Your Message"
-                    />
-                  </FormControl>
-                  <FormMessage>{errors.message?.message}</FormMessage>
-                </FormItem>
-              )}
-            </FormField>
-
-            {/* Submit Button */}
-            <Button type="submit" disabled={loading} className="w-full">
-              {loading ? "Sending..." : "Send Message"}
-            </Button>
-          </form>
-        </Form>
-
-        {/* Response Message */}
-        {response && (
-          <p className="mt-4 text-center text-gray-700 dark:text-white">{response}</p>
-        )}
+    <section className="border-b-border dark:border-b-darkBorder dark:bg-secondaryBlack inset-0 flex w-full flex-col items-center justify-center border-b-2 bg-white bg-[linear-gradient(to_right,#80808033_1px,transparent_1px),linear-gradient(to_bottom,#80808033_1px,transparent_1px)] bg-[size:70px_70px] font-base">
+      <div className="mx-auto w-container max-w-full px-5 py-20 lg:py-[100px] flex flex-col items-center justify-center">
+        <h2 className="mb-14 text-center text-2xl font-heading md:text-3xl lg:mb-20 lg:text-4xl">
+          Contact Us
+        </h2>
+        <div className="w-full max-w-3xl">
+          <ContactForm />
+        </div>
       </div>
     </section>
   );

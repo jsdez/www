@@ -15,7 +15,7 @@ const platforms = [
 export default function PlatformMarquee() {
   return (
     <Marquee
-      className="border-y-border dark:border-y-darkBorder dark:border-darkBorder dark:bg-secondaryBlack border-y-2 bg-white py-3 font-base sm:py-5"
+      className="border-y-border dark:border-y-medBorder dark:border-medBorder border-y-2 bg-white py-3 font-base sm:py-5"
       direction="left"
     >
       {platforms.map((platform, id) => (

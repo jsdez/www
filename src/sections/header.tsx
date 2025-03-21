@@ -1,7 +1,7 @@
-import { Button } from '@/components/ui/button'
+import { Button } from "@/components/ui/button";
 import Logo from "@/components/logo";
 
-export default function Header() {
+export default function Header({ onContactClick }: { onContactClick: () => void }) {
   return (
     <header className="relative dark:bg-secondaryBlack inset-0 flex min-h-[80dvh] w-full flex-col items-center justify-center bg-white bg-[linear-gradient(to_right,#80808033_1px,transparent_1px),linear-gradient(to_bottom,#80808033_1px,transparent_1px)] bg-[size:70px_70px]">
       
@@ -21,6 +21,7 @@ export default function Header() {
         <Button
           size="lg"
           className="h-12 text-base font-heading md:text-lg lg:h-14 lg:text-xl"
+          onClick={onContactClick}
         >
           Get in touch
         </Button>
