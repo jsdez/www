@@ -11,7 +11,7 @@ export default function ProfileCard({ imageUrl, caption }: Props) {
         src={imageUrl}
         alt="Jake Dennison - Founder"
       />
-      <figcaption className="border-t-2 text-text dark:text-darkText border-slate-200 dark:border-darkBorder p-4 text-center">
+      <figcaption className="border-t-2 dark:bg-secondaryBlack text-text dark:text-darkText border-slate-200 dark:border-darkBorder bg-bg p-4 text-center">
         {caption}
       </figcaption>
     </figure>
