@@ -9,9 +9,14 @@
 }
 
 body {
-  --sb-track-color: #ffffff;
-  --sb-thumb-color: #000000;
+  --sb-track-color: #ffffff; /* Default for light mode */
+  --sb-thumb-color: #A388EE;
   @apply text-text dark:text-darkText;
+}
+
+/* Dark mode adjustments */
+.dark body {
+  --sb-track-color: #212121; /* Change track color in dark mode */
 }
 
 body::-webkit-scrollbar {
@@ -20,12 +25,15 @@ body::-webkit-scrollbar {
 
 body::-webkit-scrollbar-track {
   background: var(--sb-track-color);
+  border-left: 2px solid black;
 }
 
 body::-webkit-scrollbar-thumb {
   background: var(--sb-thumb-color);
+  border-left: 2px solid black;
 }
 
+/* Fallback for browsers that support native scrollbar styling */
 @supports not selector(::-webkit-scrollbar) {
   body {
     scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
