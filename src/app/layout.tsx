@@ -4,6 +4,7 @@ import './globals.css'
 import { ThemeSwitcher } from '@/components/theme-switcher'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const hammersmithOne = Hammersmith_One({ subsets: ['latin'], weight: '400' })
 
@@ -21,7 +22,8 @@ export default function RootLayout({
       <body className={hammersmithOne.className}>
         <ThemeProvider attribute="class" disableTransitionOnChange>
           {children}
-          <Analytics/>
+          <Analytics />
+          <SpeedInsights />
           <ThemeSwitcher />
         </ThemeProvider>
       </body>
