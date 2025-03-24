@@ -11,7 +11,7 @@ export default function About() {
         <div className="flex flex-col items-center gap-8">
           {/* Image Card Above Mission */}
           <ProfileCard
-            imageUrl="/jake-profile.png"
+            imageUrl="/jake-profile.webp"
             caption="Jake Dennison - Founder"
           />
 
