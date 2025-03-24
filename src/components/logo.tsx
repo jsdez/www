@@ -27,7 +27,7 @@ export default function Logo() {
         src={isDark ? "/logo-neo-dark.png" : "/logo-neo-light.png"}
         alt="NeoAutomate Logo"
         width={360}
-        height={360}
+        height={0}
         priority
       />
     </Link>
