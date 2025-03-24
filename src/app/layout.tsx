@@ -3,6 +3,7 @@ import { Hammersmith_One } from 'next/font/google'
 import './globals.css'
 import { ThemeSwitcher } from '@/components/theme-switcher'
 import { ThemeProvider } from '@/components/theme-provider'
+import { Analytics } from "@vercel/analytics/react"
 
 const hammersmithOne = Hammersmith_One({ subsets: ['latin'], weight: '400' })
 
@@ -20,6 +21,7 @@ export default function RootLayout({
       <body className={hammersmithOne.className}>
         <ThemeProvider attribute="class" disableTransitionOnChange>
           {children}
+          <Analytics/>
           <ThemeSwitcher />
         </ThemeProvider>
       </body>
