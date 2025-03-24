@@ -39,7 +39,7 @@ export default function Services() {
               className="border-border dark:border-darkBorder dark:bg-secondaryBlack shadow-light dark:shadow-dark flex flex-col gap-3 rounded-base border-2 bg-white p-5"
               key={i}
             >
-              <h4 className="text-xl font-heading">{service.title}</h4>
+              <h3 className="text-xl font-heading">{service.title}</h3>
               <p>{service.text}</p>
             </div>
           ))}
