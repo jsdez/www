@@ -46,7 +46,7 @@ export default function ProfileHeader() {
           </Button>
         </div>
         <p className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto">
-          I'm a Senior Solutions Engineer at Atlassian, focused on Work Management. I enjoy building automation, web, AI, and business solutions with the aim to share what I learn. I also volunteer as a Technology & Solutions Consultant with Participate Projects, helping drive community impact through tech.
+          I&apos;m a Senior Solutions Engineer at Atlassian, focused on Work Management. I enjoy building automation, web, AI, and business solutions with the aim to share what I learn. I also volunteer as a Technology & Solutions Consultant with Participate Projects, helping drive community impact through tech.
         </p>
       </Card>
     </header>
