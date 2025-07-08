@@ -17,7 +17,7 @@ export default function Home() {
 
   return (
     <>
-      <Header onContactClick={scrollToContact} />
+      <Header />
       {/* <Services />
       <About />
       <Faq />
