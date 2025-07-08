@@ -13,17 +13,6 @@ export default function Footer() {
         </a>
         .
       </p>
-      <p>
-        Released under the MIT License. Original template by{' '}
-        <a
-          target="_blank"
-          href="https://github.com/neobrutalism-templates/saas"
-          className="font-heading underline"
-        >
-          neobrutalism-templates
-        </a>
-        .
-      </p>
     </footer>
   );
 }

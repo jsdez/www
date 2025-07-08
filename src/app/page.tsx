@@ -18,12 +18,12 @@ export default function Home() {
   return (
     <>
       <Header onContactClick={scrollToContact} />
-      <Services />
+      {/* <Services />
       <About />
       <Faq />
       <section ref={contactRef}>
         <Contact />
-      </section>
+      </section> */}
       <Footer />
     </>
   );
