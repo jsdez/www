@@ -34,12 +34,12 @@ export default function ProfileHeader() {
               <Book className="w-5 h-5" /> Blog
             </a>
           </Button> */}
-          <Button variant="neobrutal" className="gap-2 px-6 py-3 text-lg font-bold" asChild>
+          <Button className="gap-2 px-6 py-3 text-lg font-bold" asChild>
             <a href="https://github.com/jsdez" target="_blank" rel="noopener noreferrer">
               <Github className="w-5 h-5" /> Github
             </a>
           </Button>
-          <Button variant="neobrutal" className="gap-2 px-6 py-3 text-lg font-bold" asChild>
+          <Button className="gap-2 px-6 py-3 text-lg font-bold" asChild>
             <a href="https://www.linkedin.com/in/jake-dennison-fcl/" target="_blank" rel="noopener noreferrer">
               <Linkedin className="w-5 h-5" /> Linkedin
             </a>
