@@ -5,7 +5,7 @@ import About from "@/sections/about";
 import Services from "@/sections/services";
 import Header from "@/sections/header";
 import Faq from "@/sections/faq";
-import Contact from "@/sections/contact";
+// import Contact from "@/sections/contact";
 import Footer from "@/components/footer";
 
 export default function Home() {
@@ -21,9 +21,9 @@ export default function Home() {
       <Services />
       <About />
       <Faq />
-      <section ref={contactRef}>
+      {/* <section ref={contactRef}>
         <Contact />
-      </section>
+      </section> */}
       <Footer />
     </>
   );
