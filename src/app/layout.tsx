@@ -143,10 +143,6 @@ export default function RootLayout({
       'SaaS Solutions',
       'Business Automation',
     ],
-    worksFor: {
-      '@type': 'Organization',
-      name: 'Freelance',
-    },
     sameAs: [
       'https://github.com/jsdez',
       'https://www.linkedin.com/in/jake-dennison-fcl/',

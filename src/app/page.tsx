@@ -7,12 +7,6 @@ import Header from '@/sections/HeroSection';
 import BlogsSection from '@/sections/blogs';
 import Footer from '@/sections/footer';
 
-// Optimize dynamic imports with better loading strategies
-const MapComponent = dynamic(() => import('@/components/openlayers-map/map'), {
-  loading: () => <div className="h-screen flex items-center justify-center">Loading Map...</div>,
-  ssr: false,
-});
-
 // Lazy load ToastContainer
 const LazyToastContainer = dynamic(
   () => import('react-toastify').then((mod) => ({ default: mod.ToastContainer })),
