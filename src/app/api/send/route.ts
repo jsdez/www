@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { EmailTemplate } from "@/components/email-template";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY || "re_placeholder");
 
 export async function POST(req: Request) {
   try {
@@ -12,6 +12,13 @@ export async function POST(req: Request) {
       return NextResponse.json(
         { error: "Missing required fields" },
         { status: 400 }
+      );
+    }
+
+    if (!process.env.RESEND_API_KEY) {
+      return NextResponse.json(
+        { error: "Email service not configured" },
+        { status: 500 }
       );
     }
 
