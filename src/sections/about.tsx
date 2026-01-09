@@ -1,29 +1,59 @@
-import ProfileCard from '@/components/ui/profile-card'
+'use client';
+
+import React from 'react';
+
+import Character1 from '@/media/svgs/Character1.svg';
+import Character2 from '@/media/svgs/Character2.svg';
+import Character3 from '@/media/svgs/Character3.svg';
+import Character4 from '@/media/svgs/Character4.svg';
+import { InfoCardsContainer } from './info-card';
+import type { InfoCardProps } from './info-card'; // Make sure to export this type from info-card.tsx
 
 export default function About() {
-  return (
-    <section className="border-b-border dark:border-b-darkBorder dark:bg-secondaryBlack inset-0 flex w-full flex-col items-center justify-center border-b-2 bg-white bg-[linear-gradient(to_right,#80808033_1px,transparent_1px),linear-gradient(to_bottom,#80808033_1px,transparent_1px)] bg-[size:70px_70px] font-base">
-      <div className="mx-auto w-container max-w-full px-5 py-20 lg:py-[100px]">
-        <h2 className="mb-14 text-center text-2xl font-heading md:text-3xl lg:mb-20 lg:text-4xl">
-          About Us
-        </h2>
-        
-        <div className="flex flex-col items-center gap-8">
-          {/* Image Card Above Mission */}
-          <ProfileCard
-            imageUrl="/jake-profile.webp"
-            caption="Jake Dennison - Founder"
-          />
+  const cards: InfoCardProps[] = [
+    {
+      title: 'About Me',
+      description:
+        "Senior Solutions Engineer with over a decade of experience in IT consulting, specialising in SaaS solutions across Microsoft 365, Salesforce, Azure, and AI-driven platforms. I design and deliver scalable, secure, and innovative solutions that optimize operations and enhance productivity.",
+      imageSrc: Character1,
+      imageAlt: 'Character1',
+      bgColor: 'bg-white dark:bg-secondaryBlack',
+      imagePosition: 'right' as const, // Use type assertion to specify literal type
+    },
+    {
+      title: 'Solutions Consulting',
+      description:
+        'With a focus on digital transformation and automation, I help businesses implement strategies using modern SaaS platforms. Expertise in process automation, AI integration, and building solutions that deliver real business value.',
+      imageSrc: Character2,
+      imageAlt: 'Character2',
+      bgColor: 'bg-white dark:bg-secondaryBlack',
+      imagePosition: 'left' as const,
+    },
+    {
+      title: 'Interest in Technology',
+      description:
+        'Technology has fascinated me since I was young, especially the joy of building things. Combining tech with hands-on creation has always felt just right for me.',
+      imageSrc: Character3,
+      imageAlt: 'Character3',
+      bgColor: 'bg-white dark:bg-secondaryBlack',
+      imagePosition: 'right' as const,
+    },
+    {
+      title: 'Other Hobbies',
+      description:
+        'Here are some of my other passions: I like to dance, play chess, love watching F1, and am a Potterhead.',
+      imageSrc: Character4,
+      imageAlt: 'Character4',
+      bgColor: 'bg-white dark:bg-secondaryBlack',
+      imagePosition: 'left' as const,
+    },
+  ];
 
-          {/* Mission Statement */}
-          <div className="border-border dark:border-darkBorder dark:bg-secondaryBlack shadow-light dark:shadow-dark flex flex-col gap-3 rounded-base border-2 bg-white p-5 min-h-48 w-full lg:w-1/2 text-center">
-            <h3 className="text-xl font-heading text-text dark:text-darkText">Our Mission</h3>
-            <p className="text-lg text-text dark:text-darkText mt-4">
-              Our mission is to empower businesses through automation and innovative solutions, helping them achieve more with less effort. We believe that technology should be accessible, adaptable, and impactful for businesses of all sizes.
-            </p>
-          </div>
-        </div>
+  return (
+    <div className="w-full py-16 bg-white dark:bg-secondaryBlack">
+      <div className="mx-auto max-w-full px-5 py-8 md:py-12 text-left">
+        <InfoCardsContainer cards={cards} />
       </div>
-    </section>
-  )
+    </div>
+  );
 }

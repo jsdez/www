@@ -1,30 +1,143 @@
-"use client";
+'use client';
+import { useEffect, useState, Suspense } from 'react';
+import dynamic from 'next/dynamic';
+import LoadingScreen from '@/components/loadingScreen';
+import Navbar from '@/components/Navbar';
+import Header from '@/sections/HeroSection';
+import BlogsSection from '@/sections/blogs';
+import Footer from '@/sections/footer';
 
-import { useRef } from "react";
-import About from "@/sections/about";
-import Services from "@/sections/services";
-import Header from "@/sections/header";
-import Faq from "@/sections/faq";
-// import Contact from "@/sections/contact";
-import Footer from "@/components/footer";
+// Optimize dynamic imports with better loading strategies
+const MapComponent = dynamic(() => import('@/components/openlayers-map/map'), {
+  loading: () => <div className="h-screen flex items-center justify-center">Loading Map...</div>,
+  ssr: false,
+});
+
+// Lazy load ToastContainer
+const LazyToastContainer = dynamic(
+  () => import('react-toastify').then((mod) => ({ default: mod.ToastContainer })),
+  {
+    ssr: false,
+  },
+);
+
+// Define section interface
+interface Section {
+  id: string;
+  component: React.ComponentType;
+  priority: boolean;
+}
 
 export default function Home() {
-  const contactRef = useRef<HTMLElement | null>(null);
+  const [loadingState, setLoadingState] = useState({
+    isLoading: true,
+    isContentVisible: false,
+  });
 
-  const scrollToContact = () => {
-    contactRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
+  // Define sections with priority flag
+  const sections: Section[] = [
+    { id: 'home', component: Header, priority: true },
+    // { id: 'journey', component: MapComponent, priority: false },
+    { id: 'blogs', component: BlogsSection, priority: false },
+  ];
+
+  useEffect(() => {
+    let mounted = true;
+
+    const loadInitialContent = async () => {
+      try {
+        // Only wait for critical above-the-fold images
+        const criticalImages = Array.from(document.images).filter((img) => {
+          const rect = img.getBoundingClientRect();
+          return rect.top < window.innerHeight;
+        });
+
+        await Promise.all([
+          // Wait for critical images
+          ...criticalImages
+            .filter((img) => !img.complete)
+            .map(
+              (img) =>
+                new Promise((resolve) => {
+                  img.onload = resolve;
+                  img.onerror = resolve;
+                }),
+            ),
+          // Small delay for smoother transition
+          new Promise((resolve) => setTimeout(resolve, 300)),
+        ]);
+
+        if (mounted) {
+          setLoadingState({
+            isLoading: false,
+            isContentVisible: true,
+          });
+        }
+      } catch (error) {
+        console.error('Loading error:', error);
+        if (mounted) {
+          setLoadingState({
+            isLoading: false,
+            isContentVisible: true,
+          });
+        }
+      }
+    };
+
+    loadInitialContent();
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  const { isLoading, isContentVisible } = loadingState;
+
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
 
   return (
-    <>
-      <Header onContactClick={scrollToContact} />
-      <Services />
-      <About />
-      <Faq />
-      {/* <section ref={contactRef}>
-        <Contact />
-      </section> */}
-      <Footer />
-    </>
+    <div className="min-h-screen bg-white dark:bg-darkBg p-4 md:p-6 lg:p-8">
+      <div
+        className={`relative mx-auto w-container max-w-full bg-white dark:bg-black md:border-4 md:border-border md:rounded-base min-h-[calc(100vh-2rem)] md:min-h-[calc(100vh-3rem)] lg:min-h-[calc(100vh-4rem)] ${
+          isContentVisible ? 'opacity-100' : 'opacity-0'
+        } transition-opacity duration-300`}
+      >
+        <Navbar />
+        <Suspense fallback={null}>
+          <LazyToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
+        </Suspense>
+
+        <main className="flex min-h-full flex-col">
+          {loadingState.isLoading ? (
+            <LoadingScreen />
+          ) : (
+            <>
+              <div className="flex-grow">
+                {sections.map(({ id, component: Component }) => (
+                  <section key={id} id={id}>
+                    <Component />
+                  </section>
+                ))}
+              </div>
+              <Footer />
+              <LazyToastContainer position="bottom-right" />
+            </>
+          )}
+        </main>
+      </div>
+    </div>
   );
 }

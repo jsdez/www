@@ -1,0 +1,20 @@
+[
+  {
+    "id": "1",
+    "title": "Getting Started with Solutions Engineering",
+    "excerpt": "An introduction to solutions engineering and how it bridges the gap between technology and business needs.",
+    "date": "2026-01-09",
+    "author": "Jake Dennison",
+    "tags": ["Solutions Engineering", "Technology", "Business"],
+    "content": "Solutions engineering is a critical role that combines technical expertise with business acumen. In this post, I'll share insights from my decade of experience in IT consulting and how to approach complex business challenges with scalable solutions.\n\nKey aspects of solutions engineering include:\n\n1. **Understanding Business Needs**: Before diving into technology, it's crucial to understand what the business is trying to achieve.\n\n2. **Technology Selection**: Choosing the right platforms and tools (Microsoft 365, Salesforce, Azure) that align with business objectives.\n\n3. **Scalability and Security**: Ensuring solutions can grow with the business while maintaining security standards.\n\n4. **Stakeholder Management**: Communicating effectively with both technical and non-technical stakeholders.\n\nAs a Senior Solutions Engineer, I've learned that the best solutions aren't always the most complex - they're the ones that deliver real business value while being maintainable and scalable."
+  },
+  {
+    "id": "2",
+    "title": "Automating Business Processes with Modern SaaS",
+    "excerpt": "Learn how to leverage Microsoft 365, Salesforce, and Azure to automate repetitive tasks and boost productivity.",
+    "date": "2026-01-08",
+    "author": "Jake Dennison",
+    "tags": ["Automation", "SaaS", "Microsoft 365", "Salesforce"],
+    "content": "Process automation is one of the most impactful ways to improve business efficiency. In this post, I'll explore practical approaches to automation using modern SaaS platforms.\n\n**Why Automate?**\n\nAutomation reduces manual errors, saves time, and allows teams to focus on strategic work rather than repetitive tasks.\n\n**Key Platforms:**\n\n- **Microsoft 365 & Power Platform**: Create automated workflows with Power Automate\n- **Salesforce**: Leverage Process Builder and Flow for CRM automation\n- **Azure**: Use Logic Apps and Functions for cloud-based automation\n\n**Best Practices:**\n\n1. Start small - identify repetitive tasks that consume the most time\n2. Document your processes before automating\n3. Test thoroughly in a sandbox environment\n4. Train users on the new automated workflows\n5. Monitor and optimize continuously\n\nRemember, successful automation isn't just about the technology - it's about understanding the business process and ensuring the automation actually adds value."
+  }
+]
